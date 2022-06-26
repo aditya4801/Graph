@@ -1,1 +1,22 @@
-
+vector<int>bfsOfGraph(int V, vector<int>adj[]){
+ vector<int>ans;
+ vector<bool>visited(V,false);
+ queue<int>traverse;
+ 
+  visited[0]=true;
+  traverse.push(0);
+  
+   while(!traverse.empty()){
+    int u= traverse.front();
+    traverse.pop();
+    ans.push_back(u);
+     
+   for(int &V:adj[u]){
+    if(visited[V]==false){
+     traverse.push_back(V);
+      visited[V]= true;
+       }
+     }
+   }
+   return true;
+ }
