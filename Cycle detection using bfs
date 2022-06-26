@@ -1,0 +1,28 @@
+bool isCyclic(int src, unordered_map<int,bool>&visited, unordered_map<int, list<int>>&ans,vector<vector<int>>&parent, ){
+
+parent[src]=-1;
+visited[src]=true;
+ queue<int>q;
+ q.push(src);
+  
+  while(!q.empty()){
+  int frontNode= q.front();
+  q.pop();
+  
+  for(auto neightbours: adj[frontNode]){
+     if(!visited[neighbours] && neighbour!=parent[front]){
+       return true;
+     }
+     else if(!visited[neighbours]){
+      q.push(neighbour);
+      visited[neighbour];
+      parent[neighbour]=front;
+     }
+   }
+  }
+  return false;
+}
+
+string cycleDetection(vector<vector<int>>&edges, int n, int m){
+
+}
