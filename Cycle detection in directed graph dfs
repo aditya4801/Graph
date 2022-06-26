@@ -1,0 +1,37 @@
+bool checkDfS(int node, unordered_map<int,bool>&visited, unordered_map<int,bool>&dfsVisited, unordered_map<int,list<int>>&adj){
+
+visited[node]=true;
+dfsVisited[node]=true;
+ for(auto neighbour: adj[node]){
+  if(!visited[neighbour]){
+   if(checkDFS(neighbour, visited, dfsVisited, adj){
+     return true;
+     }
+     else if(dfsVisited[neighbour]){
+     return true;
+     }
+   }
+   //after returning make dfsvisited again false for further traversals
+   dfsVisited[node]=false;
+  }
+  return false;
+}
+
+int detectCycle(int n, vector<pair<int,int>>&edges){
+
+//creation of adj list
+{}
+
+//call dfs for all components
+
+unordered_map<int, bool>visited;
+unordered_map<int,bool>dfsVisited;
+
+ for(int i=1; i<=n; i++){
+ if(!visited[i]{
+  if(checkDFS(i, visited, dfsVisited, adj);
+   return true;
+  }
+ }
+ return false;
+}
