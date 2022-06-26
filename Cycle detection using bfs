@@ -1,4 +1,4 @@
-bool isCyclic(int src, unordered_map<int,bool>&visited, unordered_map<int, list<int>>&ans,vector<vector<int>>&parent, ){
+bool isCyclicBFS(int src, unordered_map<int,bool>&visited, unordered_map<int, list<int>>&ans,vector<vector<int>>&parent, ){
 
 parent[src]=-1;
 visited[src]=true;
@@ -25,4 +25,24 @@ visited[src]=true;
 
 string cycleDetection(vector<vector<int>>&edges, int n, int m){
 
+//cycle detection
+ void prepadjList(unordered_map<int,set<int>>&adjList, vector<pair<int>>&edges){
+  int u= edges[i].first;
+  int v= edges[i].second;
+   
+   adjList[u].insert(v);
+   adjList[v].insert(u);
+  }
+
+//to handle disconnected components
+
+unordered_map<int,bool>visited;
+
+for(int i=0; i<n; i++){
+ if(!visited[i]){
+  if(isCyclicBFS(i,visited,ans,parent,adj);
+    return true;
+   } 
+ }
+ return false;
 }
