@@ -1,0 +1,41 @@
+void findTopoSort(int node, int vis[], stack<int>&st, vector<pair<int,int>>adj[]){
+
+ vis[node]=1;
+ for(auto i:adj[node]){
+   if(!vis[i.first]{
+    findTopoSort(i.first, vis, st, adj);
+    }
+  }
+  st.push(node);
+ }
+ 
+ void shortestPath(int src, int N, vector<pair<int,int>>adj[]){
+   int vis[N]= {0};
+   stack<int>st;
+   vector<vector<int>>ans;
+    for(int i=0; i<N; i++){
+    if(!vis[i])
+      findTopoSort(i,vis,st,adj);
+      }
+      
+      int dist[N];
+       
+       for(int i=0; i<N; i++_{
+        dist[N]=INT_MAX;
+        dist[0]= 0;
+        
+        while(!st.empty()){
+        int node= st.top();
+        st.pop();
+        
+         if(dist[node]!=INT_MAX){
+         for(auto i: adj[node]){
+         if(dist[node] + i.second < dist[i.first])
+           dist[i.first]= dist[node] + i.second;
+           ans.push_back(dist);
+            }
+          }
+        }
+    }
+    return ans;
+  }
