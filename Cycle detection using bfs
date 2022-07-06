@@ -15,7 +15,7 @@ visited[src]=true;
      }
      else if(!visited[neighbours]){
       q.push(neighbour);
-      visited[neighbour];
+      visited[neighbour]=1;
       parent[neighbour]=front;
      }
    }
