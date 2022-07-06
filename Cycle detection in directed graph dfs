@@ -11,7 +11,7 @@ dfsVisited[node]=true;
      return true;
      }
    }
-   //after returning make dfsvisited again false for further traversals
+   //after returning make dfsvisited again false because it is returned and no cycle is present there 
    dfsVisited[node]=false;
   }
   return false;
