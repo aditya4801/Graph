@@ -1,3 +1,4 @@
+
 void dfs(int node, unordered_map<int,bool>&visited, unordered_map<int,list<int>>&adj, vector<int>&component){
 
 //ans store
@@ -13,8 +14,7 @@ component.push_back(node);
  }
  
  vector<vector<int>>depthFirstSearch(int V, int E, vector<vector<int>>&edges){
- // adj list 
- 
+ //adj list preparation
  void prepadjList(unordered_map<int,set<int>>&adjList, vector<pair<int>>&edges){
   int u= edges[i].first;
   int v= edges[i].second;
@@ -22,7 +22,6 @@ component.push_back(node);
    adjList[u].insert(v);
    adjList[v].insert(u);
   }
- 
   vector<vector<int>>ans;
   unordered_map<int,bool>visited;
    
