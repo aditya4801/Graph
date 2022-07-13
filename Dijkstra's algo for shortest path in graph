@@ -1,0 +1,89 @@
+vector<int>dijkstra(vector<vector<int>>& vec, int vertices, int edges, int source){
+ //creating adj list
+   uordered_map<int, list<pair<int,int>>adj;
+   
+   for(int i=0; i<edges; i++){
+    int u= vec[i][0];
+    int v= vec[i][1];
+    int w= vec[i][2];
+    
+  adj[u].push_back(make_pair(v,w));
+  adj[v].push_back(make_pair(u,w));
+   }
+   
+   //creating dist array
+   
+   vector<int>dist(vertices);
+   
+   for(int i=0; i<vertices; i++){
+     dist[i]=INT_MAX;
+     
+     //set(dist,node)
+     set<pair<int,int>>st;
+     
+     dist[source]= 0;
+     st.insert(make_pair(0,source));
+     
+     while(!st.empty()){
+      //fetch top record
+      
+       auto top= *(st.begin());
+       
+       int nodeDistance= top.first;
+       int topNode= top.second;
+       
+       //remove top record
+       
+        st.erase(st.begin());
+        
+        //traverse through neighbours
+        
+ for(auto nbr: adj[topNode]{
+   if(nodeDistance + nbr.second < dist[nbr.first]){
+             
+     //checking if record consists the node already
+         auto record= st.find(make_pair(dist[nbr.first], nbr.first));
+             
+ //if record exists erase 
+             
+       if(record!= st.end())
+       st.erase(record);
+  }
+    //dist update
+    
+   dist[nbr.first]= nodeDistance + nbr.second;
+  
+  // record update in set
+  
+  st.insert(make_pair(dist[nbr.first], nbr.first));
+            }
+         }
+     }
+     return dist;
+   }
+}
+
+
+ANOTHER APPROACH USING MIN HEAP
+
+vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
+    {
+        // Code here
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        pq.push({0,S});
+        vector<int>dis(V+1,INT_MAX);
+        dis[S]=0;
+        while(!pq.empty()){
+            auto p=pq.top();
+            pq.pop();
+            int distance=p.first;
+            int node=p.second;
+            for(auto x : adj[node]){
+                if(dis[x[0]]>distance+x[1]){
+                    dis[x[0]]=distance+x[1];
+                    pq.push({dis[x[0]],x[0]});
+                }
+            }
+        }
+        return dis;
+    }
