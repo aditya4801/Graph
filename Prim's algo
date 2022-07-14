@@ -1,0 +1,31 @@
+  int spanningTree(int V, vector<vector<int>> adj[])
+   {
+       // code here
+       // first prepare our adjacency list
+       vector<bool> vis(V+1, false);
+       
+       priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+       
+       q.push({0, 0});
+       
+       int sum = 0;
+       while(!q.empty())
+       {
+           auto topPair = q.top();
+           int currentNode = topPair.second;
+           int currentWt = topPair.first;
+           q.pop();
+           
+           if(!vis[currentNode])
+           {
+               for(auto neighbor:adj[currentNode])
+               {
+                   if(!vis[neighbor[0]])
+                       q.push({neighbor[1], neighbor[0]});
+               }
+               vis[currentNode] = true;
+               sum+=currentWt;
+           }
+       }
+       return sum;
+   }
