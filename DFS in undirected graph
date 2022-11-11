@@ -1,4 +1,24 @@
+class solution{
+public:
+ 
+  void solve(int node, uordered_map<int,bool>&visited, int V,  vector<int> adj[]){
+    visited[V]= true;
+    for(auto i: adj[node]){
+     if(!visited[i])
+      solve(i,visited,V,adj);
+   }
+  }
+vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+   unordered_map<int,bool>visited;
+        visited[V]=false;
+        vector<int>ans;
+        
+        solve(0,visited,ans,V,adj);
+        return ans;
+ }
+};
 
+----------------------------------------------------------oR-----------------------------------------------------------------------------------------------------------
 void dfs(int node, unordered_map<int,bool>&visited, unordered_map<int,list<int>>&adj, vector<int>&component){
 
 //ans store
